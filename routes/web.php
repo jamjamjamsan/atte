@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware("authi")->group(function(){
+Route::middleware("auth")->group(function(){
     Route::post("/reststart",[RestController::class,"restStart"]);
 
     Route::post("/restend", [RestController::class, "restEnd"]);

@@ -35,19 +35,23 @@
             height: 50vh;
         }
 
-        .form {
+        .work {
             width: 100%;
             display: flex;
             flex-wrap: wrap;
         }
 
-        form {
+        .form {
             width: 40%;
             display: flex;
             flex-wrap: wrap;
             margin: 10px auto;
         }
-
+        
+        .logout {
+            display: inline;
+        }
+        
         .btn {
             width: 100%;
 
@@ -77,7 +81,11 @@
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
                 <a href="{{ url('/attendance') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">日付一覧</a>
-                <a href="/logout" class="text-sm text-gray-700 dark:text-gray-500 underline">ログアウト</a>
+                <form name="form_1" method="POST" action="logout" class="logout">
+                    @csrf
+                    <a href="javascript:form_1.submit()" class="text-sm text-gray-700 dark:text-gray-500 underline">ログアウト</a>
+                </form>
+
                 @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ログイン</a>
 
@@ -91,42 +99,53 @@
 
     </div>
     <div class="main">
-        @auth
-        <div class="form">
+        <div>
+            @if (session()->has('errors'))
+            <div class="alert alert-danger">
+                <ul>
+                    {{session('errors')}}
+                </ul>
+            </div>
+            @endif
 
-            <form method="POST" action="/workstart">
+        </div>
+
+        @auth
+        <div class="work">
+
+            <form method="POST" action="/workstart" class="form">
                 @csrf
                 <button type="submit" class="btn">勤務開始</button>
             </form>
-            <form method="POST" action="/workend">
+            <form method="POST" action="/workend" class="form">
                 @csrf
                 <button type="submit" class="btn">勤務終了</button>
             </form>
-            <form method="POST" action="/reststart">
+            <form method="POST" action="/reststart" class="form">
                 @csrf
                 <button type="submit" class="btn">休憩開始</button>
             </form>
-            <form method="POST" action="/restend">
+            <form method="POST" action="/restend" class="form">
                 @csrf
                 <button type="submit" class="btn">休憩終了</button>
             </form>
         </div>
         @else
-        <div class="form">
+        <div class="work">
 
-            <form method="POST" action="/">
+            <form method="POST" action="/" class="form">
                 @csrf
                 <button type="submit" class="btn_else" disabled>勤務開始</button>
             </form>
-            <form method="POST" action="/">
+            <form method="POST" action="/" class="form">
                 @csrf
                 <button type="submit" class="btn_else" disabled>勤務終了</button>
             </form>
-            <form method="POST" action="/">
+            <form method="POST" action="/" class="form">
                 @csrf
                 <button type="submit" class="btn_else" disabled>休憩開始</button>
             </form>
-            <form method="POST" action="/">
+            <form method="POST" action="/" class="form">
                 @csrf
                 <button type="submit" class="btn_else" disabled>休憩終了</button>
             </form>
