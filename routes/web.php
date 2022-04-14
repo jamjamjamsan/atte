@@ -36,4 +36,8 @@ Route::middleware("auth")->group(function(){
 
     Route::get("/attendance",[WorkTimeController::class,"show"]);
 
+    Route::post("/back", [WorkTimeController::class, "back"]);
+
+    Route::post("/next", [WorkTimeController::class, "next"]);
+
 });

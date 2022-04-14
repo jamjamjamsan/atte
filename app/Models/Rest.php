@@ -13,4 +13,11 @@ class Rest extends Model
     public function work() {
         return $this->belongsTo("WorkTime::class");
     }
+
+    public function get_rest(){
+        $startTime = strtotime($this->rest_start);
+        $endTime = strtotime($this->rest_end);
+        $diff = $endTime - $startTime;
+        return $diff;
+    }
 }

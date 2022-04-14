@@ -29,6 +29,7 @@
             align-items: center;
         }
 
+        
         .main {
             background: gray;
             display: flex;
@@ -67,8 +68,9 @@
         }
 
         .footer {
-            margin-left: 50%;
+            margin: 0 auto;
             font-size: 15px;
+            display: table;
         }
     </style>
 </head>
@@ -78,7 +80,7 @@
         <h3>Atte</h3>
         <div class="navbar">
             @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block" id="menu">
                 @auth
                 <a href="{{ url('/attendance') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">日付一覧</a>
                 <form name="form_1" method="POST" action="logout" class="logout">

@@ -50,15 +50,38 @@ class WorkTimeController extends Controller
     }
     public function show(Request $request){
         $user = Auth::user();
-        $work = WorkTime::all();
-        $rest = Rest::all();
+        $user_id = Auth::id();
+        $work = WorkTime::where("user_id",$user_id)->first();
+        $rest = Rest::where("work_time_id","$work->id")->first();
         $dt = new Carbon;
         $date = $dt->toDateString();
         $work_time = WorkTime::whereDate("date", $date)->orderBy("user_id", "asc")->paginate(5);
-        return view("show",["today" => $date, "work" => $work_time]);
+        
+
+        return view("show",["today" => $date, "works" => $work_time]);
+    }
+    public function back(Request $request) {
+        
+        $dt = new Carbon($request->back);
+        $date = $dt->subDay()->format("Y-m-d");
+        
+        
+        $work_time = WorkTime::whereDate("date", $date)->orderBy("user_id", "asc")->paginate(5);
+        return view("show", ["today" => $date, "works" => $work_time]);
+    }
+    public function next(Request $request) {
+        $dt = new Carbon($request->next);
+        //$dx = $dt->format("Y-m-d");
+        $now = new Carbon();
+        $today = $now->toDateString();
+        $date = $dt->addDay()->format("Y-m-d");
+        $work_time = WorkTime::whereDate("date", $date)->orderBy("user_id", "asc")->paginate(5);
+        return view("show", ["today" => $date, "works" => $work_time]);
+        }
+        
     }
     
-}
+
 //if (WorkTime::where("user_id",$user->id)->where("date",$date)->whereNull("work_end")){
            // WorkTime::where("user_id", $user->id)->where("date", $date)->update(["work_end" => $time]);
            // return redirect()->back()->with("success", "勤務終了しました");
