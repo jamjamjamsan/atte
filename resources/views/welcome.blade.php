@@ -29,10 +29,10 @@
             align-items: center;
         }
 
-        
+
         .main {
-            background: gray;
-            display: flex;
+            background-color: whitesmoke;
+            display: block;
             height: 50vh;
         }
 
@@ -40,6 +40,7 @@
             width: 100%;
             display: flex;
             flex-wrap: wrap;
+            height: 80%;
         }
 
         .form {
@@ -48,11 +49,11 @@
             flex-wrap: wrap;
             margin: 10px auto;
         }
-        
+
         .logout {
             display: inline;
         }
-        
+
         .btn {
             width: 100%;
 
@@ -72,6 +73,11 @@
             font-size: 15px;
             display: table;
         }
+
+        .alert {
+            text-align: center;
+            padding-top: 10px;
+        }
     </style>
 </head>
 
@@ -82,6 +88,7 @@
             @if (Route::has('login'))
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block" id="menu">
                 @auth
+                <a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ホーム</a>
                 <a href="{{ url('/attendance') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">日付一覧</a>
                 <form name="form_1" method="POST" action="logout" class="logout">
                     @csrf
@@ -100,10 +107,13 @@
         </div>
 
     </div>
+
     <div class="main">
-        <div>
+
+        @auth
+        <div class="error">
             @if (session()->has('errors'))
-            <div class="alert alert-danger">
+            <div class="alert">
                 <ul>
                     {{session('errors')}}
                 </ul>
@@ -111,8 +121,6 @@
             @endif
 
         </div>
-
-        @auth
         <div class="work">
 
             <form method="POST" action="/workstart" class="form">

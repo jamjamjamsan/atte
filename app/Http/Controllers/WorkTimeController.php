@@ -43,7 +43,7 @@ class WorkTimeController extends Controller
         
         if (empty(WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_end"))) {
             WorkTime::where("user_id", $user->id)->where("date", $date)->update(["work_end" => $time]);
-            return redirect()->back()->with("errors", "勤務終了しました");
+            return redirect()->back()->with("errors", $user->name."さんお疲れさまでした!");
     } else {
         return redirect()->back()->with("errors","すでに退勤してます");
     }

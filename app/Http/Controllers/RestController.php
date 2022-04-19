@@ -30,11 +30,23 @@ class RestController extends Controller
         $time = $dt->toTimeString();
         $work_time = WorkTime::where("user_id", $user->id)->where("date", $date)->first();
         $rest = $work_time->rests()->whereNull("rest_end")->first();
+        if($rest === null){
+            return redirect()->back()->with("errors", "休憩開始ボタンが押されていません");
+        } else{
+            Rest::where("id", $rest->id)->update(["rest_end" => $time]);
+
+
+            return redirect()->back()->with("errors", "休憩終了しました");
+        }
+            //Rest::where("id", $rest->id)->update(["rest_end" => $time]);
+
+
+            //return redirect()->back()->with("errors", "休憩終了しました");
         
-        Rest::where("id",$rest->id)->update(["rest_end" => $time]);
+        //Rest::where("id",$rest->id)->update(["rest_end" => $time]);
 
 
-        return redirect()->back()->with("errors", "休憩開始しました");
+        //return redirect()->back()->with("errors", "休憩終了しました");
     }
 }
 
