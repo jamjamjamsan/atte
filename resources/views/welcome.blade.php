@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Atte</title>
 
 
 
@@ -23,17 +23,23 @@
             display: flex;
             justify-content: space-between;
         }
-
+        .top h3 {
+            margin-left: 15px;
+        }
         .navbar {
             display: flex;
             align-items: center;
         }
-
+        .navbar a {
+            margin: 0 10px;
+        }
 
         .main {
             background-color: whitesmoke;
             display: block;
-            height: 50vh;
+            height: 70vh;
+            width: 95%;
+            margin: 0 auto;
         }
 
         .work {
@@ -78,6 +84,9 @@
             text-align: center;
             padding-top: 10px;
         }
+        ul {
+            padding: 0;
+        }
     </style>
 </head>
 
@@ -115,7 +124,7 @@
             @if (session()->has('errors'))
             <div class="alert">
                 <ul>
-                    {{session('errors')}}
+                    <li>{{session('errors')}}</li>
                 </ul>
             </div>
             @endif

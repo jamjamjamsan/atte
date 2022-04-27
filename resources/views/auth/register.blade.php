@@ -1,16 +1,26 @@
 <x-guest-layout>
     <style>
         .footer {
-            margin-left: 50%;
-            font-size: 15px;
+            display: table;
+            margin: 0 auto;
         }
 
         .head {
             margin-left: 10px;
             font-size: 30px;
         }
+
         .login {
             text-align: center;
+        }
+
+        .button {
+            background-color: blue;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            color: white;
+            margin-bottom: 10px;
         }
     </style>
 
@@ -61,13 +71,13 @@
 
 
             <div class="flex items-center justify-end mt-4">
-                
 
-                <x-button class="ml-4">
+
+                <button class="button">
                     {{ __('登録') }}
-                </x-button>
+                    <button>
             </div>
-            <div class="login"> 
+            <div class="login">
                 <p>アカウントをお持ちの方はこちらから</p>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('ログイン') }}

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Rest;
 use App\Models\WorkTime;
 use Carbon\Carbon;
-
+use Illuminate\Pagination\Paginator;
 use function PHPUnit\Framework\isEmpty;
 
 class WorkTimeController extends Controller
@@ -52,7 +52,7 @@ class WorkTimeController extends Controller
         $user = Auth::user();
         $user_id = Auth::id();
         $work = WorkTime::where("user_id",$user_id)->first();
-        $rest = Rest::where("work_time_id","$work->id")->first();
+        
         $dt = new Carbon;
         $date = $dt->toDateString();
         $work_time = WorkTime::whereDate("date", $date)->orderBy("user_id", "asc")->paginate(5);
@@ -85,3 +85,5 @@ class WorkTimeController extends Controller
 //if (WorkTime::where("user_id",$user->id)->where("date",$date)->whereNull("work_end")){
            // WorkTime::where("user_id", $user->id)->where("date", $date)->update(["work_end" => $time]);
            // return redirect()->back()->with("success", "勤務終了しました");
+
+//$rest = Rest::where("work_time_id",$work->id)->first();

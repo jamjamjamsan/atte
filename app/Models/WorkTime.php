@@ -35,7 +35,7 @@ class WorkTime extends Model
         $getRests = $this->rests;
         $dt = new Carbon;
         $date = $dt->toDateString();
-        $user = Auth::user();
+        $user = $this->users;
         if(WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_end") !== null){
         $workTime = $endTime - $startTime;
         //$diffHour = floor($diff / 3600);

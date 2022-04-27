@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>Atte</title>
 </head>
 
 <body>
   <style>
+    h3 {
+      margin-left: 30px;
+    }
     .top {
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .navbar {
@@ -20,7 +25,7 @@
       align-items: center;
     }
 
-    a {
+    .navbar a {
       margin: 0 10px;
     }
 
@@ -31,13 +36,17 @@
     .logout {
       margin: 0 10px 0 0;
     }
-
+    .main {
+      width: 90%;
+      background-color: whitesmoke;
+      margin: 0 auto;
+    }
     .arrow {
       position: relative;
       display: inline-block;
       padding: 10px;
       border: 1px solid #5070e3;
-
+      margin: 0 10px;
       top: 5px;
     }
 
@@ -66,13 +75,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    .days p {
+      margin: 0;
     }
 
     table {
       border-top: 1px solid gray;
       margin: 0 auto;
-      width: 70%;
+      width: 80%;
       border-collapse: collapse;
+      height: 300px;
     }
 
     th {
@@ -90,15 +105,34 @@
     }
 
     .timelist {
-      background-color: whitesmoke;
+      
       width: 100%;
       margin: 0 auto;
+    }
+
+    .pagelink {
+      justify-content: center;
+      margin-top: 10px;
+      display: flex;
     }
 
     .footer {
       margin: 20px auto;
       font-size: 15px;
       display: table;
+    }
+    @media (max-width: 768px){
+      .top {
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+      }
+      .timelist {
+        font-size: 10px;
+      }
+      table {
+        height: 150px;
+      }
     }
   </style>
   <div class="top">
@@ -126,46 +160,54 @@
     </div>
 
   </div>
-  <div class="days">
-    <form method="POST" name="back" action="{{url('/back')}}">
-      @csrf
-      <input type="hidden" name="back" value="{{$today}}">
-      <a class="arrow-left arrow" href="javascript:back.submit()"></a>
-    </form>
-    <p>{{$today}}</p>
-    <form method="POST" name="next" action="{{url('/next')}}">
-      @csrf
-      <input type="hidden" name="next" value="{{$today}}">
-      <a class="arrow-right arrow" href="javascript:next.submit()"></a>
-    </form>
-  </div>
-  <div class="timelist">
+  <div class="main">
+    <div class="days">
+      <form method="POST" name="back" action="{{url('/back')}}">
+        @csrf
+        <input type="hidden" name="back" value="{{$today}}">
+        <a class="arrow-left arrow" href="javascript:back.submit()"></a>
+      </form>
+      <p>{{$today}}</p>
+      <form method="POST" name="next" action="{{url('/next')}}">
+        @csrf
+        <input type="hidden" name="next" value="{{$today}}">
+        <a class="arrow-right arrow" href="javascript:next.submit()"></a>
+      </form>
+    </div>
+    <div class="timelist">
 
-    <table>
-      <tr>
-        <th>名前</th>
-        <th>勤務開始</th>
-        <th>勤務終了</th>
-        <th>休憩時間</th>
-        <th>勤務時間</th>
-      </tr>
+      <table>
+        <tr>
+          <th>名前</th>
+          <th>勤務開始</th>
+          <th>勤務終了</th>
+          <th>休憩時間</th>
+          <th>勤務時間</th>
+        </tr>
 
-      @foreach($works as $work)
-      <tr>
-        <td>{{$work->users->name}}</td>
-        <td>{{$work->work_start}}</td>
-        <td>{{$work->work_end}}</td>
-        <td>{{$work->getRest()}}</td>
-        <td>{{$work->workTimes()}}</td>
-      </tr>
-      @endforeach
-    </table>
-    {{ $works->links() }}
+        @foreach($works as $work)
+        <tr>
+          <td>{{$work->users->name}}</td>
+          <td>{{$work->work_start}}</td>
+          <td>{{$work->work_end}}</td>
+          <td>{{$work->getRest()}}</td>
+          <td>{{$work->workTimes()}}</td>
+        </tr>
+        @endforeach
+      </table>
+      <div class="pagelink">
+        {{ $works->links() }}
+      </div>
+
+    </div>
   </div>
+  
+
+  </div>
+  <footer>
+    <h4 class="footer">Atte.inc</h4>
+  </footer>
 
 </body>
-<footer>
-  <h4 class="footer">Atte.inc</h4>
-</footer>
 
 </html>

@@ -1,16 +1,27 @@
 <x-guest-layout>
     <style>
         .footer {
-            margin-left: 50%;
+            margin: 0 auto;
             font-size: 15px;
+            display: table;
         }
 
         .head {
             margin-left: 10px;
             font-size: 30px;
         }
+
         .account {
             text-align: center;
+        }
+
+        .submit {
+            background-color: blue;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            color: white;
+            margin-bottom: 10px;
         }
     </style>
 
@@ -54,20 +65,22 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
+            <div class="">
                 @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
                 @endif
+            </div>
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
+            <div class="flex items-center justify-center mt-4">
+
+                <button class=" submit">
+                    {{ __('ログイン') }}
+                </button>
             </div>
             <div class="account">
-                <p>アカウントをお持ちの方はこちらから</p>
+                <p>アカウントをお持ちでない方はこちらから</p>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
                     {{ __('会員登録') }}
                 </a>

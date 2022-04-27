@@ -17,7 +17,7 @@ use App\Http\Controllers\WorkTimeController;
 |
 */
 
-Route::get('/',[WorkTimeController::class, "index"]);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,6 +27,8 @@ require __DIR__.'/auth.php';
 
 Route::middleware("auth")->group(function(){
     Route::post("/reststart",[RestController::class,"restStart"]);
+
+    Route::get('/',[WorkTimeController::class, "index"]);
 
     Route::post("/restend", [RestController::class, "restEnd"]);
 
