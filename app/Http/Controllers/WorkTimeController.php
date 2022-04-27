@@ -36,6 +36,19 @@ class WorkTimeController extends Controller
         $dt = new Carbon;
         $date = $dt->toDateString();
         $time = $dt->toTimeString();
+        $worktime = WorkTime::where("user_id", $user->id)->where("date", $date)->first()->rests;
+        $rest = $worktime->whereNull("rest_end")->first();
+        if($rest) {
+            
+            return redirect()->back()->with("errors", "休憩が終わっていません");
+        }
+        //if($worktime->values("rest_start")->count() > $worktime->values("rest_end")->count()){
+            //return redirect()->back()->with("errors", "休憩が終わっていません");
+        // } else {
+            //dd($worktime->values("rest_end")->count());
+        //}
+        
+
         
         if (WorkTime::where("user_id",$user->id)->where("date",$date)->value("work_start") === null) {
             return redirect()->back()->with("errors", "出勤が打刻されていません");
