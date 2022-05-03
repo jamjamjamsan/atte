@@ -7,29 +7,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
 ### Premium Partners
 
@@ -47,23 +24,8 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 - **[Lendio](https://lendio.com)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-最初にロゴ・アイキャッチ画像などを表示
 
 # Atte
 
@@ -72,17 +34,14 @@ Atteは勤怠管理システムです。従業員の出退勤および休憩の�
 
 ## デモ
 
-![デモ](https://image-url.gif)
-![Screenshot 2022-05-04 at 00-11-00 Atte](https://user-images.githubusercontent.com/69347206/166491519-c794f27a-9bbf-4113-9329-cb56306e59e9.png)
+会員登録またはログイン後、出退勤および休憩の打刻ページに
+遷移。日付一覧では利用者の出勤表の一覧を5件ずつ表示させます。
+
+打刻ページ
 ![Screenshot 2022-05-04 at 00-07-56 Atte](https://user-images.githubusercontent.com/69347206/166491929-bcf9755a-eaee-4346-9b87-2d5bf8803453.png)
 
-## 使い方
-
-DEMOの実行方法など、"Webアプリ"の基本的な使い方を説明
-
-1. 使い方
-2. 使い方
-3. 使い方
+日付一覧
+![Screenshot 2022-05-04 at 00-11-00 Atte](https://user-images.githubusercontent.com/69347206/166491519-c794f27a-9bbf-4113-9329-cb56306e59e9.png)
 
 
 ## 環境
@@ -93,29 +52,6 @@ DEMOの実行方法など、"Webアプリ"の基本的な使い方を説明
 * Laravel Breeze
 * MySql 5.7.34
 
-
-## 注意事項
-
-注意点などがあれば書く
+当アプリはOSはWindows、エディターがVisual Studio Codeで開発しました。
 
 
-## 文責
-
-作成情報を列挙する
-
-* 作成者
-* 所属
-* E-mail
-* [@twitter_username](https://twitter.com/twitter_username)
-
-
-## ライセンス
-
-ライセンスを明示する
-
-"リポジトリ名" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
-
-
-## 参考文献
-
-参考にした情報源（サイト・論文）などの情報、リンク
