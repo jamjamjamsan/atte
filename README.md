@@ -17,6 +17,13 @@ Atteは勤怠管理システムです。従業員の出退勤および休憩の�
 ![Screenshot 2022-05-04 at 00-11-00 Atte](https://user-images.githubusercontent.com/69347206/166491519-c794f27a-9bbf-4113-9329-cb56306e59e9.png)
 
 
+## 制作の背景と目的
+
+模擬案件という形で開発しました。オンラインスクールの課題となっております。
+
+人事評価及び従業員の勤怠管理を目的としています。
+
+
 ## 環境
 
 * HTML/CSS
@@ -24,6 +31,7 @@ Atteは勤怠管理システムです。従業員の出退勤および休憩の�
 * Laravel 8.83.6
 * Laravel Breeze
 * MySql 5.7.34
+* javascript
 
 当アプリはOSはWindows、エディターがVisual Studio Codeで開発しました。
 
