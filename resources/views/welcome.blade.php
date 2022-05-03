@@ -87,6 +87,9 @@
         ul {
             padding: 0;
         }
+        li {
+            list-style: none;
+        }
     </style>
 </head>
 

@@ -62,3 +62,60 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+最初にロゴ・アイキャッチ画像などを表示
+
+# Atte
+
+Atteは勤怠管理システムです。従業員の出退勤および休憩の打刻を行えます。
+
+
+## デモ
+
+![デモ](https://image-url.gif)
+![Screenshot 2022-05-04 at 00-11-00 Atte](https://user-images.githubusercontent.com/69347206/166491519-c794f27a-9bbf-4113-9329-cb56306e59e9.png)
+![Screenshot 2022-05-04 at 00-07-56 Atte](https://user-images.githubusercontent.com/69347206/166491929-bcf9755a-eaee-4346-9b87-2d5bf8803453.png)
+
+## 使い方
+
+DEMOの実行方法など、"Webアプリ"の基本的な使い方を説明
+
+1. 使い方
+2. 使い方
+3. 使い方
+
+
+## 環境
+
+* HTML/CSS
+* PHP 7.4.21
+* Laravel 8.83.6
+* Laravel Breeze
+* MySql 5.7.34
+
+
+## 注意事項
+
+注意点などがあれば書く
+
+
+## 文責
+
+作成情報を列挙する
+
+* 作成者
+* 所属
+* E-mail
+* [@twitter_username](https://twitter.com/twitter_username)
+
+
+## ライセンス
+
+ライセンスを明示する
+
+"リポジトリ名" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+
+
+## 参考文献
+
+参考にした情報源（サイト・論文）などの情報、リンク

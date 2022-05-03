@@ -36,6 +36,9 @@ class WorkTimeController extends Controller
         $dt = new Carbon;
         $date = $dt->toDateString();
         $time = $dt->toTimeString();
+        if(null === WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_start")) {
+            return redirect()->back()->with("errors", "出勤が押されていません");
+        } 
         $worktime = WorkTime::where("user_id", $user->id)->where("date", $date)->first()->rests;
         $rest = $worktime->whereNull("rest_end")->first();
         if($rest) {
