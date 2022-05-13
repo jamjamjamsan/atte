@@ -42,7 +42,7 @@ class WorkTime extends Model
         $pasttime = WorkTime::where("user_id", $user->id)->where("date", $yesterday)->first();
 
 
-        if ($pasttime->work_start !== null && $pasttime->work_end === null && $pasttime->date !== $date) {
+        if (isset($pasttime->work_start) && $pasttime->work_end === null && $pasttime->date !== $date) {
             $startTime = strtotime("00:00:00");
             $endTime = strtotime($this->work_end);
             $getRests = $this->rests;

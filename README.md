@@ -35,10 +35,14 @@ Atteは勤怠管理システムです。従業員の出退勤および休憩の�
 
 当アプリはOSはWindows、エディターがVisual Studio Codeで開発しました。
 
-##　インストール方法
+## インストール方法
+
 windowsならxampp,macならmampをインストール（PHP 7.4.21以上のもの）。
+
 composerのインストール
-git clone でダウンロードを行い、保存場所のディレクトリに移動後、
-コマンド　php artisan serve　を入力
+
+git clone でダウンロードを行い、保存場所のディレクトリに移動後、コマンド　php artisan serve　を入力
+
 xamppまたはmampを立ち上げ、DB設定を行う。
+
 参考url https://qiita.com/mitashun/items/ced252681edf2b01cd32

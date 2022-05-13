@@ -42,7 +42,7 @@ class WorkTimeController extends Controller
             $error = "$past->date.の退勤を押されていません";
         }
         if ($worktime !== null) { // 勤務開始ボタンを押した場合
-            if ($worktime->end_time === null) { // 勤務終了ボタンを押した場合
+            if ($worktime->work_end === null) { // 勤務終了ボタンを押した場合
                 $rest = Rest::where('work_time_id', $worktime->id)->latest()->first();
                 if ($rest !== null) { // 休憩開始ボタンを押した場合
                     if ($rest->rests_end !== null) { // 休憩終了ボタンを押した場合

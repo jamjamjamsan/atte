@@ -155,7 +155,7 @@
             </form>
             <form method="POST" action="/restend" class="form">
                 @csrf
-                <button type="submit" class="btn" <?php if ($btn["work_out"] == false) {
+                <button type="submit" class="btn" <?php if ($btn["rest_out"] == false) {
                  ?> disabled <?php    
                 } ?>>休憩終了</button>
             </form>
