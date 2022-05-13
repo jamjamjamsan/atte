@@ -137,19 +137,27 @@
 
             <form method="POST" action="/workstart" class="form">
                 @csrf
-                <button type="submit" class="btn">勤務開始</button>
+                <button type="submit" class="btn" <?php if ($btn["work_in"] == false) {
+                 ?> disabled <?php    
+                } ?>>勤務開始</button>
             </form>
             <form method="POST" action="/workend" class="form">
                 @csrf
-                <button type="submit" class="btn">勤務終了</button>
+                <button type="submit" class="btn" <?php if ($btn["work_out"] == false) {
+                 ?> disabled <?php    
+                } ?>>勤務終了</button>
             </form>
             <form method="POST" action="/reststart" class="form">
                 @csrf
-                <button type="submit" class="btn">休憩開始</button>
+                <button type="submit" class="btn" <?php if ($btn["rest_in"] == false) {
+                 ?> disabled <?php    
+                } ?>>休憩開始</button>
             </form>
             <form method="POST" action="/restend" class="form">
                 @csrf
-                <button type="submit" class="btn">休憩終了</button>
+                <button type="submit" class="btn" <?php if ($btn["work_out"] == false) {
+                 ?> disabled <?php    
+                } ?>>休憩終了</button>
             </form>
         </div>
         @else

@@ -18,6 +18,12 @@ class RestController extends Controller
         $work_time = WorkTime::where("user_id",$user->id)->where("date",$date)->first();
         $work_end = WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_end");
         $work_start = WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_start");
+        $btn = [
+            "work_in" => false,
+            "work_end" => false,
+            "rest_in" => false,
+            "rest_end" => true,
+        ];
         if($work_end) {
             return redirect()->back()->with("errors","すでに退勤しています");
         } elseif($work_start === null) {
@@ -26,7 +32,7 @@ class RestController extends Controller
             Rest::create(["work_time_id" => $work_time->id, "rest_start" => $time]);
 
 
-            return redirect()->back()->with("errors", "休憩開始しました");
+            return redirect()->back()->with(["errors" => "休憩開始しました", "btn" => $btn]);
         }
         
         
@@ -42,6 +48,12 @@ class RestController extends Controller
         }
         $rest = $work_time->rests()->whereNull("rest_end")->first();
         $work_end = WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_end");
+        $btn = [
+            "work_in" => false,
+            "work_end" => true,
+            "rest_in" => true,
+            "rest_end" => false,
+        ];
         if($work_end){
             return redirect()->back()->with("errors", "すでに退勤しています");
         } elseif ($rest === null) {
@@ -53,7 +65,7 @@ class RestController extends Controller
             )->update(["rest_end" => $time]);
 
 
-            return redirect()->back()->with("errors", "休憩終了しました");
+            return redirect()->back()->with(["errors" => "休憩終了しました","btn" => $btn]);
         }
             //Rest::where("id", $rest->id)->update(["rest_end" => $time]);
 
