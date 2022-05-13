@@ -35,6 +35,7 @@ Atteは勤怠管理システムです。従業員の出退勤および休憩の�
 
 当アプリはOSはWindows、エディターがVisual Studio Codeで開発しました。
 
+
 ## インストール方法
 
 windowsならxampp,macならmampをインストール（PHP 7.4.21以上のもの）。
