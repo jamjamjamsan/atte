@@ -45,11 +45,11 @@ class WorkTimeController extends Controller
             if ($worktime->work_end === null) { // 勤務終了ボタンを押した場合
                 $rest = Rest::where('work_time_id', $worktime->id)->latest()->first();
                 if ($rest !== null) { // 休憩開始ボタンを押した場合
-                    if ($rest->rests_end !== null) { // 休憩終了ボタンを押した場合
+                    if ($rest->rest_end !== null) { // 休憩終了ボタンを押した場合
                         $work_out = true;
                         $rest_in = true;
                     } else { // 休憩中の場合
-                        $work_out = true;
+                        $work_out = false;
                         $rest_out = true;
                         // $rest_out = true;
                     }
