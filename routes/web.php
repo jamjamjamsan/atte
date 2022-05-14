@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware("auth")->group(function(){
+Route::middleware("auth,verified")->group(function(){
     Route::post("/reststart",[RestController::class,"restStart"]);
 
     Route::get('/',[WorkTimeController::class, "index"]);
