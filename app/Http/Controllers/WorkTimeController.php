@@ -172,8 +172,8 @@ class WorkTimeController extends Controller
         $dt = new Carbon($request->back);
         $date = $dt->subDay()->format("Y-m-d");
         
-        
         $work_time = WorkTime::whereDate("date", $date)->orderBy("user_id", "asc")->paginate(5);
+        
         return view("show", ["today" => $date, "works" => $work_time]);
     }
     public function next(Request $request) {

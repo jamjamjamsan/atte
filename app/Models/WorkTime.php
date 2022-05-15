@@ -41,36 +41,19 @@ class WorkTime extends Model
         $worktime = WorkTime::where("user_id", $user->id)->where("date", $date)->first();
         $pasttime = WorkTime::where("user_id", $user->id)->where("date", $yesterday)->first();
 
-
-        if (isset($pasttime->work_start) && $pasttime->work_end === null && $pasttime->date !== $date) {
-            $startTime = strtotime("00:00:00");
-            $endTime = strtotime($this->work_end);
-            $getRests = $this->rests;
-            $dt = new Carbon;
-            $date = $dt->toDateString();
-            $user = $this->users;
-            
-                $workTime = $endTime - $startTime;
-                //$diffHour = floor($diff / 3600);
-                // $diffMin = floor(($diff / 60) % 60);
-                // $diffSec = $diff % 60;
-                // $workTime = Carbon::createFromTime($diffHour,$diffMin,$diffSec);
-
-                foreach ($getRests as $getRest) {
-                    $workTime -= $getRest->get_rest();
-                }
-
-                return gmdate("H:i:s", $workTime);
-        } 
+        
+        
         
         //kizon
         $endTime = strtotime($this->work_end);
         $startTime = strtotime($this->work_start);
         $getRests = $this->rests;
+        $date = $this->date;
         $dt = new Carbon;
-        $date = $dt->toDateString();
+        //$date = $dt->toDateString();
         $user = $this->users;
-        if(WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_end") !== null){
+        
+        if(WorkTime::where("user_id", $user->id)->where("date", $date)->value("work_end") !== null ){
         $workTime = $endTime - $startTime;
         //$diffHour = floor($diff / 3600);
        // $diffMin = floor(($diff / 60) % 60);
@@ -92,5 +75,32 @@ class WorkTime extends Model
 
             return gmdate("H:i:s", $workTime);
         }
+       
 } 
 }
+
+
+
+
+
+
+//if (isset($pasttime->work_start) && $pasttime->work_end === null && $pasttime->date !== $date) {
+    //$startTime = strtotime("00:00:00");
+   // $endTime = strtotime($this->work_end);
+    //$getRests = $this->rests;
+    //$dt = new Carbon;
+    //$date = $dt->toDateString();
+    //$user = $this->users;
+
+    //$workTime = $endTime - $startTime;
+    //$diffHour = floor($diff / 3600);
+    // $diffMin = floor(($diff / 60) % 60);
+    // $diffSec = $diff % 60;
+    // $workTime = Carbon::createFromTime($diffHour,$diffMin,$diffSec);
+
+    //foreach ($getRests as $getRest) {
+        //$workTime -= $getRest->get_rest();
+    //}
+
+    //return gmdate("H:i:s", $workTime);
+//}
