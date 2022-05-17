@@ -25,10 +25,12 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware("auth")->group(function(){
+Route::middleware(["auth","verified"])->group(function(){
     Route::post("/reststart",[RestController::class,"restStart"]);
 
     Route::get('/',[WorkTimeController::class, "index"]);
+
+    Route::get("/user", [WorkTimeController::class, "user"]);
 
     Route::post("/restend", [RestController::class, "restEnd"]);
 
@@ -41,5 +43,7 @@ Route::middleware("auth")->group(function(){
     Route::post("/back", [WorkTimeController::class, "back"]);
 
     Route::post("/next", [WorkTimeController::class, "next"]);
+
+    Route::post("/userpage", [WorkTimeController::class, "userPage"]);
 
 });

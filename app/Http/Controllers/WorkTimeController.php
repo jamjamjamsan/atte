@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Rest;
 use App\Models\WorkTime;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use function PHPUnit\Framework\isEmpty;
@@ -186,7 +187,18 @@ class WorkTimeController extends Controller
         
         return view("show", ["today" => $date, "works" => $work_time]);
         }
+    
+    public function user() {
+        $users = User::all();
         
+        return view("user", ["users" => $users]);
+    }
+    public function userPage(Request $request) {
+        $user = WorkTime::where("user_id",$request->userlist)->get();
+        
+        return view("userpage",["user" => $user]);
+
+    } 
     }
     
 

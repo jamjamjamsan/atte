@@ -23,13 +23,16 @@
             display: flex;
             justify-content: space-between;
         }
+
         .top h3 {
             margin-left: 15px;
         }
+
         .navbar {
             display: flex;
             align-items: center;
         }
+
         .navbar a {
             margin: 0 10px;
         }
@@ -84,11 +87,23 @@
             text-align: center;
             padding-top: 10px;
         }
+
         ul {
             padding: 0;
         }
+
         li {
             list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            
+
+        .navbar {
+            font-size: 10px;
+        }
+
+            
         }
     </style>
 </head>
@@ -102,6 +117,7 @@
                 @auth
                 <a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ホーム</a>
                 <a href="{{ url('/attendance') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">日付一覧</a>
+                <a href="{{ url('/user') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ユーザー一覧</a>
                 <form name="form_1" method="POST" action="logout" class="logout">
                     @csrf
                     <a href="javascript:form_1.submit()" class="text-sm text-gray-700 dark:text-gray-500 underline">ログアウト</a>
@@ -138,26 +154,26 @@
             <form method="POST" action="/workstart" class="form">
                 @csrf
                 <button type="submit" class="btn" <?php if ($btn["work_in"] == false) {
-                 ?> disabled <?php    
-                } ?>>勤務開始</button>
+                                                    ?> disabled <?php
+                                                            } ?>>勤務開始</button>
             </form>
             <form method="POST" action="/workend" class="form">
                 @csrf
                 <button type="submit" class="btn" <?php if ($btn["work_out"] == false) {
-                 ?> disabled <?php    
-                } ?>>勤務終了</button>
+                                                    ?> disabled <?php
+                                                            } ?>>勤務終了</button>
             </form>
             <form method="POST" action="/reststart" class="form">
                 @csrf
                 <button type="submit" class="btn" <?php if ($btn["rest_in"] == false) {
-                 ?> disabled <?php    
-                } ?>>休憩開始</button>
+                                                    ?> disabled <?php
+                                                            } ?>>休憩開始</button>
             </form>
             <form method="POST" action="/restend" class="form">
                 @csrf
                 <button type="submit" class="btn" <?php if ($btn["rest_out"] == false) {
-                 ?> disabled <?php    
-                } ?>>休憩終了</button>
+                                                    ?> disabled <?php
+                                                            } ?>>休憩終了</button>
             </form>
         </div>
         @else
