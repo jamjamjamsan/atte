@@ -31,7 +31,14 @@ class WorkTimeController extends Controller
         $pasttime = WorkTime::where("user_id", $user->id)->where("date", $yesterday)->first();
         $pastrest = $pasttime->rests()->whereNull("rest_end")->first();
         $past = WorkTime::where("user_id",$user->id)->where("date","<",$date)->first();
-        
+        if (isset($pasttime) && $pastrest !== null && $pasttime->work_end === null && $pasttime->date !== $date) {
+            $pastrest->update([
+                "rest_end" => "23:59:59"
+            ]);
+            Rest::create([
+                "rest_start" => "00:00:00"
+            ]);
+        }
         if (isset($pasttime) && $pasttime->work_start !== null && $pasttime->work_end === null && $pasttime->date !== $date) {//退勤が日をまたいだ時の処理
             $pasttime->update([
                 "work_end" => "23:59:59"
@@ -71,7 +78,7 @@ class WorkTimeController extends Controller
             'rest_in' => $rest_in,
             'rest_out' => $rest_out,
         ];
-        return view('welcome', ['btn' => $btn,"errors" => $errors]);
+        return view('welcome', ['btn' => $btn]);
     }
         
         
