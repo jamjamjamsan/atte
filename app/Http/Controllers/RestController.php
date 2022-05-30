@@ -10,7 +10,7 @@ use Carbon\Carbon;
 
 class RestController extends Controller
 {
-    public function restStart(){
+    public function restStart(){//休憩開始処理
         $user = Auth::user();
         $dt = new Carbon;
         $date = $dt->toDateString();
@@ -24,9 +24,9 @@ class RestController extends Controller
             "rest_in" => false,
             "rest_end" => true,
         ];
-        if($work_end) {
+        if($work_end) {//退勤しているのに休憩開始ボタンを押したときの処理
             return redirect()->back()->with("errors","すでに退勤しています");
-        } elseif($work_start === null) {
+        } elseif($work_start === null) {//出勤していないのに休憩終了ボタンを押したときの処理
             return redirect()->back()->with("errors", "出勤が押されていません");
         } else {
             Rest::create(["work_time_id" => $work_time->id, "rest_start" => $time]);
@@ -37,13 +37,13 @@ class RestController extends Controller
         
         
     }
-    public function restEnd(){
+    public function restEnd(){//休憩終了処理
         $user = Auth::user();
         $dt = new Carbon;
         $date = $dt->toDateString();
         $time = $dt->toTimeString();
         $work_time = WorkTime::where("user_id", $user->id)->where("date", $date)->first();
-        if($work_time === null){
+        if($work_time === null) {//出勤していないのに休憩終了ボタンを押したときの処理
             return redirect()->back()->with("errors", "出勤ボタンが押されていません");
         }
         $rest = $work_time->rests()->whereNull("rest_end")->first();
@@ -54,9 +54,9 @@ class RestController extends Controller
             "rest_in" => true,
             "rest_end" => false,
         ];
-        if($work_end){
+        if($work_end) {//退勤しているのに休憩終了ボタンを押したときの処理
             return redirect()->back()->with("errors", "すでに退勤しています");
-        } elseif ($rest === null) {
+        } elseif ($rest === null) {//休憩していないのに休憩終了ボタンを押したときの処理
             return redirect()->back()->with("errors", "休憩開始ボタンが押されていません");
         } else {
             Rest::where(

@@ -172,7 +172,7 @@
 
   </div>
   <div>
-    <table>
+    <table class="main">
       <tr>
         <th>名前</th>
         <th>日付</th>

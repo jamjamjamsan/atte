@@ -175,7 +175,7 @@
 
   </div>
   
-    <table>
+    <table class="main">
       <tr>
         <th>ユーザー名</th>
         <th>勤怠表</th>

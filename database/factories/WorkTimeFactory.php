@@ -14,7 +14,9 @@ class WorkTimeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "date" => $this->faker->date("Y-m-d"),
+            "work_start" => $this->faker->time("H:i:s"),
+            "work_end" => $this->faker->time("H:i:s")
         ];
     }
 }
